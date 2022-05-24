@@ -1,10 +1,10 @@
 = kafka-streams-docker
+:toc: preamble
+//:toc-title: pass:[<h3>Contents</h3>]
 
 The example of a dockerized Kafka Streams application using docker-compose. It runs  https://kafka.apache.org/25/documentation/streams/developer-guide/dsl-api.html[the WordCount demo application] that is included in the Apache Kafka documentation.
 
-:toc:
-
-== Dependencies
+== What you need
 
 * https://docs.docker.com/get-docker/[Docker]
 * https://www.scala-lang.org/download/all.html[Scala]
@@ -12,15 +12,36 @@ The example of a dockerized Kafka Streams application using docker-compose. It r
 
 == How to run
 
-. Execute command `sbt docker`
-. In the docker folder, open the terminal and execute the command `docker-compose up -d`
-. If you want to produce input messages, after 3 minutes from starting the application execute the command:
-`docker-compose exec broker kafka-console-producer --topic text-topic --bootstrap-server localhost:9092`
-. If you want to consume output messages, execute the command:
-`docker-compose exec broker kafka-console-consumer --topic count-topic --from-beginning --bootstrap-server localhost:9092`
-. To shut down docker application, execute the command: `docker-compose down`
+. Execute command
 
+----
+sbt docker
+----
+. In the docker folder, open the terminal and execute the command
+[source, text]
+----
+docker-compose up -d
+----
+. If you want to produce input messages, after 3 minutes from starting the application execute the command:
+[source, text]
+----
+docker-compose exec broker kafka-console-producer --topic text-topic --bootstrap-server localhost:9092
+----
+. If you want to consume output messages, execute the command:
+[source, text]
+----
+docker-compose exec broker kafka-console-consumer --topic count-topic --from-beginning --bootstrap-server localhost:9092
+----
+. To shut down docker application, execute the command:
+[source, text]
+----
+docker-compose down
+----
 == FAQ
 
-. If the service damian-app crushes, execute the command: `docker-compose run damian-app`
+. If the service damian-app crushes, execute the command:
+[source, text]
+----
+docker-compose run damian-app
+----
 
